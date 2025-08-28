@@ -7,12 +7,12 @@
  */
 function convertToObject(sourceString) {
   // write your code here
-  const result = {};
+  const styles = {};
 
   sourceString
-    .split(';') // split by semicolons
-    .map((line) => line.trim()) // trim whitespace
-    .filter((line) => line.length > 0) // remove empty entries
+    .split(';')
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0)
     .forEach((decl) => {
       const [property, ...valueParts] = decl.split(':');
 
@@ -21,12 +21,12 @@ function convertToObject(sourceString) {
       }
 
       const key = property.trim();
-      const value = valueParts.join(':').trim(); // in case value contains `:`
+      const value = valueParts.join(':').trim();
 
-      result[key] = value;
+      styles[key] = value;
     });
 
-  return result;
+  return styles;
 }
 
 module.exports = convertToObject;
